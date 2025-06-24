@@ -1,66 +1,69 @@
-import React, { useState, useEffect } from "react";
-import { getOrders } from "../services/api";
-import OrderCard from "../components/OrderCard";
+// src/pages/OrdersPage.jsx
+import React, { useState, useEffect } from 'react';
+import OrderCard from '../components/OrderCard';
+import { useTranslation } from 'react-i18next';
 
-export default function OrdersPage() {
+const OrdersPage = () => {
+  const { t } = useTranslation();
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("all");
+  const [selectedStatus, setSelectedStatus] = useState('');
 
   useEffect(() => {
-    getOrders()
-      .then((data) => {
-        console.log("API status values:", data.map((o) => o.status));
-        setOrders(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching orders:", error);
-        setLoading(false);
-      });
+    fetch('https://my.api.mockaroo.com/orders.json?key=e49e6840')
+      .then((res) => res.json())
+      .then((data) => setOrders(data))
+      .catch((err) => console.error('Fetch error:', err));
   }, []);
 
-  const filterOptions = [
-    { label: "All Orders", value: "all" },
-    { label: "Delivered", value: "delivered" },
-    { label: "On the Way", value: "on-the-way" },
-    { label: "Info Received", value: "order-info-received" },
+  const filteredOrders = selectedStatus
+    ? orders.filter((order) => order.status === selectedStatus)
+    : orders;
+
+  const statuses = [
+    { label: t('allOrders'), value: '' },
+    { label: t('delivered'), value: 'delivered' },
+    { label: t('onTheWay'), value: 'on-the-way' },
+    { label: t('infoReceived'), value: 'order-info-received' },
   ];
 
-  const filteredOrders =
-    filter === "all"
-      ? orders
-      : orders.filter((order) => order.status === filter);
-
   return (
-    <div>
-      <div className="flex justify-center mb-8 space-x-4">
-        {filterOptions.map(({ label, value }) => (
-          <button
-            key={value}
-            onClick={() => setFilter(value)}
-            className={`px-4 py-2 rounded-full font-semibold ${
-              filter === value
-                ? "bg-purple-600 text-white"
-                : "bg-gray-200 text-gray-700"
-            } hover:bg-purple-500 hover:text-white transition`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 md:p-8">
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-blue-800 mb-4">
+          {t('ordersTitle')}
+        </h1>
+        <p className="text-center text-gray-600 text-lg mb-6">
+          {t('trackMessage')}
+        </p>
 
-      {loading ? (
-        <p className="text-center text-gray-600">Loading orders...</p>
-      ) : filteredOrders.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredOrders.map((order) => (
-            <OrderCard key={order.id} order={order} />
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
+          {statuses.map((status) => (
+            <button
+              key={status.value}
+              onClick={() => setSelectedStatus(status.value)}
+              className={`px-5 py-2 rounded-full border font-medium transition-all duration-300 text-sm md:text-base ${
+                selectedStatus === status.value
+                  ? 'bg-blue-600 text-white border-blue-600 shadow-md'
+                  : 'bg-white text-blue-600 border-blue-300 hover:bg-blue-50'
+              }`}
+            >
+              {status.label}
+            </button>
           ))}
         </div>
-      ) : (
-        <p className="text-center text-gray-500">No orders found.</p>
-      )}
+
+        {filteredOrders.length === 0 ? (
+          <p className="text-center text-gray-500 text-lg">No orders found.</p>
+        ) : (
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredOrders.map((order) => (
+              <OrderCard key={order.id} order={order} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+};
+
+export default OrdersPage;

@@ -1,8 +1,11 @@
 {
-    "ordersTitle": "Orders Dashboard",
-    "status": "Status",
-    "eta": "ETA",
-    "pickup": "Pickup location",
-    "trackMessage": "Track your orders easily and stay updated on pickup locations and ETA."
-  }
-  
+  "ordersTitle": "Orders Dashboard",
+  "status": "Status",
+  "eta": "ETA",
+  "pickup": "Pickup location",
+  "trackMessage": "Track your orders easily and stay updated on pickup locations and ETA.",
+  "allOrders": "All Orders",
+  "delivered": "Delivered",
+  "onTheWay": "On the Way",
+  "infoReceived": "Info Received"
+}

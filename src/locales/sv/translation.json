@@ -1,8 +1,11 @@
 {
-    "ordersTitle": "Beställningsöversikt",
-    "status": "Status",
-    "eta": "Beräknad tid",
-    "pickup": "Upphämtningsplats",
-    "trackMessage": "Spåra dina beställningar enkelt och håll dig uppdaterad om upphämtningsplatser och leveranstid."
-  }
-  
+  "ordersTitle": "Beställningsöversikt",
+  "status": "Status",
+  "eta": "Beräknad tid",
+  "pickup": "Upphämtningsplats",
+  "trackMessage": "Spåra dina beställningar enkelt och håll dig uppdaterad om upphämtningsplats och ETA.",
+  "allOrders": "Alla beställningar",
+  "delivered": "Levererad",
+  "onTheWay": "På väg",
+  "infoReceived": "Information mottagen"
+}
