@@ -27,11 +27,11 @@ En enkel och responsiv React-applikation för att visa och filtrera kunders pake
 
 ```bash
 git clone https://github.com/KhattabAlshami90/orders-dashboard.git
-cd orders
+cd orders-dashboard
 Installera beroenden:
+npm install --legacy-peer-deps
 
 
-npm install
 Starta utvecklingsservern:
 
 npm start
