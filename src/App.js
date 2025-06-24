@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import OrdersPage from "./pages/OrdersPage";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 function App() {
+  const { t } = useTranslation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="max-w-7xl mx-auto p-6">
+      <LanguageSwitcher />
+      <h1 className="text-3xl font-bold mb-4 text-center">
+        {t("trackMessage")}
+      </h1>
+      <OrdersPage />
     </div>
   );
 }

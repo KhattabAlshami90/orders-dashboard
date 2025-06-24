@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Orders Dashboard - React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+En enkel och responsiv React-applikation för att visa och filtrera kunders paketbeställningar. Applikationen stödjer flerspråkighet (Svenska och Engelska) och hämtar orderdata från ett externt API.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Funktioner
 
-### `npm start`
+- Visa lista med ordrar och detaljer som status, ETA, upphämtningsplats, avsändare och mer.
+- Filtrering av ordrar baserat på status (t.ex. Delivered, On the Way, Ready for Pickup).
+- Flerspråkigt stöd med möjlighet att växla mellan Svenska och Engelska.
+- Responsiv design som fungerar bra på både mobil och desktop.
+- Enkel och tydlig UI byggd med React och Tailwind CSS.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Kom igång
 
-### `npm test`
+### Förutsättningar
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (version 16 eller senare rekommenderas)
+- npm (medföljer Node.js)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Klona detta repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone <din-repo-url>
+cd orders
+Installera beroenden:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+bash
+Kopiera
+Redigera
+npm install
+Starta utvecklingsservern:
 
-### `npm run eject`
+bash
+Kopiera
+Redigera
+npm start
+Öppna webbläsaren och navigera till:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+arduino
+Kopiera
+Redigera
+http://localhost:3000
+Projektstruktur
+bash
+Kopiera
+Redigera
+/public
+  /locales
+    /en
+      translation.json   # Engelska översättningar
+    /sv
+      translation.json   # Svenska översättningar
+/src
+  /components            # Återanvändbara React-komponenter (OrderCard, LanguageSwitcher)
+  /pages                 # Sidor (OrdersPage)
+  /locales               # Språkfiler om man väljer import i src istället för public
+  App.js                 # Huvudkomponent, appens layout och routing
+  i18n.js                # Konfiguration för i18next
+  index.js               # Entrypoint, importerar i18n och renderar App
+package.json             # Projektets beroenden och scripts
+README.md                # Denna fil
+Flerspråkighet (i18n)
+Vi använder i18next tillsammans med react-i18next för att hantera språk.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Översättningar finns som JSON-filer i public/locales/{språk}/translation.json.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Språk kan bytas via språkväxlarkomponenten (LanguageSwitcher).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Du kan enkelt lägga till fler språk genom att skapa nya mappar och filer i locales.
 
-## Learn More
+Design och teknikval
+React 18+ - UI biblioteket för att bygga användargränssnitt.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Tailwind CSS - Utility-first CSS framework för snabb och responsiv styling.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Fetch API - För att hämta orderdata från mock API.
 
-### Code Splitting
+i18next & react-i18next - Hantering av översättningar och språkbyte.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+useState & useEffect - React hooks för statehantering och livscykel.
 
-### Analyzing the Bundle Size
+Testing
+Denna app är enkel och testas manuellt:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Byt språk i språkväxlaren och kontrollera att alla texter ändras.
 
-### Making a Progressive Web App
+Välj olika orderstatus-filter och verifiera att rätt ordrar visas.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Testa appen på olika skärmstorlekar för att säkerställa responsiv design.
 
-### Advanced Configuration
+Möjlig förbättring och skalbarhet
+Lägg till automatisk språkdetektering baserat på användarens webbläsarinställningar.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Spara användarens språkval i localStorage för att komma ihåg det vid återbesök.
 
-### Deployment
+Utöka filtermöjligheter (t.ex. datum, avsändare).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Implementera en backend för att hantera användarsessioner och autentisering.
 
-### `npm run build` fails to minify
+Hantera flera länder med lokaliserade datumformat och valutahantering.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Inför enhetstester med t.ex. Jest och React Testing Library.
+
+Kontakt
+Har du frågor eller feedback, kontakta mig gärna:
+
+Namn: Khattab Alshami
+
+E-post: Khmoal90@gmail.com
+
+Telefon: 073-528 38 47
+
