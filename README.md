@@ -26,26 +26,18 @@ En enkel och responsiv React-applikation för att visa och filtrera kunders pake
 1. Klona detta repository:
 
 ```bash
-git clone <din-repo-url>
+git clone https://github.com/KhattabAlshami90/orders-dashboard.git
 cd orders
 Installera beroenden:
 
-bash
-Kopiera
-Redigera
+
 npm install
 Starta utvecklingsservern:
 
-bash
-Kopiera
-Redigera
 npm start
 Öppna webbläsaren och navigera till:
-
-arduino
-Kopiera
-Redigera
 http://localhost:3000
+
 Projektstruktur
 bash
 Kopiera
